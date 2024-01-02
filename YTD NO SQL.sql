@@ -2,14 +2,20 @@
 /**
 ----YTD EM CONSULTA SQL (WINDOWS FUNCTION)-----
 
-YTD È uma sigla que significa Year to Date e se refere a um perÌodo que comeÁa no inÌcio do ano (em janeiro)
-e termina na data em que um relatÛrio financeiro ou cont·bil È finalizado, como se fosse a express„o
-ìdo comeÁo do ano atÈ hojeî ou ìacumulado do anoî.
+YTD √© uma sigla que significa Year to Date e se refere a um per√≠odo que come√ßa no in√≠cio do ano (em janeiro)
+e termina na data em que um relat√≥rio financeiro ou cont√°bil √© finalizado, como se fosse a express√£o
+‚Äúdo come√ßo do ano at√© hoje‚Äù ou ‚Äúacumulado do ano‚Äù.
+
+----SQL----
+Para este c√°lculo foi feito uma consulta selecionamento apenas tr√™s colunas necess√°rias para a an√°lise, 
+convertendo o formato da data para uma melhor visualiza√ß√£o dos dados e o uso da cl√°usula OVER para
+para acumular a soma dos valores de venda desde o in√≠cio (ROWS BETWEEN UNBOUNDED PRECEDING) do per√≠odo
+at√© a data atual (AND CURRENT ROW)
 **/
 
 SELECT 
     ProductKey,
-	CONVERT(VARCHAR, ShipDate, 23) AS ShipDate,
+    CONVERT(VARCHAR, ShipDate, 23) AS ShipDate,
     SalesAmount,
     SUM(SalesAmount) OVER (PARTITION BY ShipDate ORDER BY ShipDate ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS Acumulado
 FROM 
