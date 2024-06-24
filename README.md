@@ -1,5 +1,7 @@
 # Linguagem SQL
 
+ <img align="center" alt="html5" src="https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927.svg?style=for-the-badge&logo=Microsoft-SQL-Server&logoColor=white" />
+
 ### Scripts em SQL para Análise De Dados
 
 
